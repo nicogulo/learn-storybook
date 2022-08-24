@@ -2,13 +2,6 @@ import React from "react";
 import "./button.css";
 import styled from "@emotion/styled";
 
-const ButtonComp = styled.button`
-  color: ${(props) => (props.color ? "white" : "black")};
-  :hover {
-    background-color: #000;
-  }
-`;
-
 interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
@@ -34,6 +27,12 @@ interface ButtonProps {
   onHover?: () => void;
 }
 
+const ButtonComp = styled.button<ButtonProps>`
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
 /**
  * Primary UI component for user interaction
  */
@@ -50,6 +49,7 @@ export const Button = ({
     : "storybook-button--secondary";
   return (
     <ButtonComp
+      label={label}
       type="button"
       className={[
         "storybook-button",
